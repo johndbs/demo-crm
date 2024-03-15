@@ -1,5 +1,11 @@
 <header class="fixed-top">
-Header content
+
+
+    <ng-content select=".tr-icon-open"></ng-content>
+    <ng-content select=".tr-icon-close"></ng-content>
+
+    <ng-content select=".tr-header"></ng-content>
+
 </header>
 <main>
     <div class="shadow position-fixed">
@@ -8,16 +14,17 @@ Header content
 
     <aside>
         <div class="scroller">
-            Nav content
+            <ng-content select=".tr-nav"></ng-content>
         </div>
     </aside>
 
     <div class="content">
         Page content 
+
     </div>
 
     <footer>
-        Footer content
+        <ng-content select=".tr-footer"></ng-content>
     </footer>
 
 </main>
