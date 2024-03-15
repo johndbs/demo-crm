@@ -2,3 +2,7 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+/* Importing custom SCSS file. */
+@import "./styles/fonts";
+@import "./styles/theme";
