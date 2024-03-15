@@ -11,8 +11,9 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    CoreModule
+    // Ensure CoreModule is imported prior to AppRoutingModule to guarantee availability of its components for routing. For instance, AppRoutingModule relies on components exported by CoreModule for correct routing configuration
+    CoreModule, 
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
