@@ -5,13 +5,15 @@ import { IconsModule } from '../icons/icons.module';
 import { BtnComponent } from './components/btn/btn.component';
 import { TableLightComponent } from './components/table-light/table-light.component';
 import { RouterModule } from '@angular/router';
+import { PricePipe } from './pipes/price.pipe';
 
 
 
 @NgModule({
   declarations: [
     BtnComponent,
-    TableLightComponent
+    TableLightComponent,
+    PricePipe
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { RouterModule } from '@angular/router';
     IconsModule,
     TemplatesModule, 
     BtnComponent,
-    TableLightComponent
+    TableLightComponent,
+    PricePipe
   ]
 })
 export class SharedModule { }
