@@ -3,11 +3,11 @@
     <app-table-light [titles]="headers">
         <tr *ngFor="let item of collection">
             <td>{{ item.serviceType }}</td>
-            <td>{{ item.client }}</td>
+            <td>{{ item.client | uppercase }}</td>
             <td>{{ item.numberOfDays }}</td>
-            <td>{{ item.dailyRateExVAT }}</td>
-            <td>{{ total(item.dailyRateExVAT, item.numberOfDays) }}</td>
-            <td>{{ total(item.dailyRateExVAT, item.numberOfDays, item.vat) }}</td>
+            <td>{{ item.dailyRateExVAT | currency}}</td>
+            <td>{{ item.dailyRateExVAT | price:item.numberOfDays | currency}}</td>
+            <td>{{ item.dailyRateExVAT | price:item.numberOfDays:item.vat | currency}}</td>
             <td>{{ item.state }}</td>
         </tr>
     </app-table-light>

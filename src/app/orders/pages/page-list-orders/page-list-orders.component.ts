@@ -30,14 +30,4 @@ export class PageListOrdersComponent implements OnInit{
     this.ordersService.getCollection().subscribe((data)=> this.collection = data);
   }
 
-
-  public total(val: number, coef: number, vat?: number) : number {
-    if(vat){
-      return val * coef * (1 + vat/100);
-    }
-    return val * coef;
-  }
-
-
-
 }
