@@ -1,3 +1,15 @@
 <app-template-fullwidth title="List orders">
-    <p>page-list-orders works!</p>
+    
+    <app-table-light [titles]="headers">
+        <tr *ngFor="let item of collection">
+            <td>{{ item.serviceType }}</td>
+            <td>{{ item.client }}</td>
+            <td>{{ item.numberOfDays }}</td>
+            <td>{{ item.dailyRateExVAT }}</td>
+            <td>{{ total(item.dailyRateExVAT, item.numberOfDays) }}</td>
+            <td>{{ total(item.dailyRateExVAT, item.numberOfDays, item.vat) }}</td>
+            <td>{{ item.state }}</td>
+        </tr>
+    </app-table-light>
+    <app-btn destRoute="add" label="Add an order"></app-btn>
 </app-template-fullwidth>
