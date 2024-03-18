@@ -8,7 +8,11 @@
             <td>{{ item.dailyRateExVAT | currency}}</td>
             <td>{{ item | price:false | currency}}</td>
             <td>{{ item | price:true | currency}}</td>
-            <td>{{ item.state }}</td>
+            <td (change)="changeState(item, $event)">
+                <select>
+                    <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">{{ state }}</option>
+                </select>
+            </td>
         </tr>
     </app-table-light>
     <app-btn destRoute="add" label="Add an order"></app-btn>

@@ -24,10 +24,17 @@ export class PageListOrdersComponent implements OnInit{
     "State"
   ];
 
+  public states = Object.values(StateOrder);
+
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit(): void {
     this.ordersService.getCollection().subscribe((data)=> this.collection = data);
+  }
+
+  public changeState(order: Order, event: any): void {
+    const state = event.target.value;
+    this.ordersService.changeState(order, state).subscribe((data) => order.state = data.state);
   }
 
 }
