@@ -1,0 +1,10 @@
+{
+    "orders" : [
+        {"id": 1, "dailyRateExVAT": 1200, "numberOfDays": 20, "vat": 20, "state": "PAID", "serviceType": "Dev Angular", "client": "WorldCompany", "comment": "Top comment"},
+        {"id": 2, "dailyRateExVAT": 1000, "numberOfDays": 10, "vat": 20, "state": "CANCELED", "serviceType": "Dev React", "client": "WorldCompany", "comment": "Project cancelled"}, 
+        {"id": 3, "dailyRateExVAT": 1000, "numberOfDays": 5, "vat": 20, "state": "OPTION", "serviceType": "Dev Vue", "client": "Mega Corp", "comment": "New prospect"},
+        {"id": 4, "dailyRateExVAT": 1000, "numberOfDays": 60, "vat": 20, "state": "CONFIRMED", "serviceType": "Dev Angular", "client": "Mega Corp", "comment": "New prospect, second project"},
+        {"id": 5, "dailyRateExVAT": 1000, "numberOfDays": 200, "vat": 20, "state": "OPTION", "serviceType": "Dev Angular", "client": "Tiny corp", "comment": "New prospect"},
+        {"id": 6, "dailyRateExVAT": 1500, "numberOfDays": 20, "vat": 20, "state": "OPTION", "serviceType": "Dev spring REST app", "client": "Tiny corp", "comment": "New prospect"}
+      ]
+}
