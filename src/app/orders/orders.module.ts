@@ -5,6 +5,7 @@ import { OrdersRoutingModule } from './orders-routing.module';
 import { PageAddOrderComponent } from './pages/page-add-order/page-add-order.component';
 import { PageEditOrderComponent } from './pages/page-edit-order/page-edit-order.component';
 import { PageListOrdersComponent } from './pages/page-list-orders/page-list-orders.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PageListOrdersComponent } from './pages/page-list-orders/page-list-orde
   ],
   imports: [
     CommonModule,
-    OrdersRoutingModule
+    OrdersRoutingModule,
+    SharedModule
   ]
 })
 export class OrdersModule { }

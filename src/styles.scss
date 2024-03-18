@@ -6,3 +6,7 @@
 /* Importing custom SCSS file. */
 @import "./styles/fonts";
 @import "./styles/theme";
+
+html, body {
+  height: 100%;
+}

@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TemplateFullWidthComponent } from './template-full-width/template-full-width.component';
+import { TemplateContainerComponent } from './components/template-container/template-container.component';
+import { TemplateFullwidthComponent } from './components/template-fullwidth/template-fullwidth.component';
 
 
 
 @NgModule({
   declarations: [
-    TemplateFullWidthComponent
+    TemplateFullwidthComponent,
+    TemplateContainerComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    TemplateFullwidthComponent,
+    TemplateContainerComponent
   ]
 })
 export class TemplatesModule { }
