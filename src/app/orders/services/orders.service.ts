@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Order } from '../../core/models/order';
 import { Observable, of } from 'rxjs';
 import { StateOrder } from '../../core/enums/state-order';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class OrdersService {
     {id: 6, dailyRateExVAT: 1500, numberOfDays: 20, vat: 20, state: StateOrder.OPTION, serviceType: 'Dev spring REST app', client: 'Tiny corp', comment: 'New prospect'}
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
 
   public getCollection(): Observable<Order[]> {
-    return of(this.collection);
+    return this.http.get<Order[]>(`http://localhost:3000/orders`);
   }
 
 
