@@ -35,4 +35,8 @@ export class OrdersService {
     return this.http.put<Order>(`${this.apiUrl}/orders/${order.id}`, order);
   }
 
+  public getItemById(id: string): Observable<Order> {
+    return this.http.get<Order>(`${this.apiUrl}/orders/${id}`);
+  }
+
 }

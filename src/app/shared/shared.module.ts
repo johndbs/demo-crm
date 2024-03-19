@@ -7,7 +7,7 @@ import { TableLightComponent } from './components/table-light/table-light.compon
 import { RouterModule } from '@angular/router';
 import { PricePipe } from './pipes/price.pipe';
 import { StateDirective } from './directives/state.directive';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import { StateDirective } from './directives/state.directive';
   exports: [
     IconsModule,
     TemplatesModule, 
+    ReactiveFormsModule,
     BtnComponent,
     TableLightComponent,
     PricePipe,

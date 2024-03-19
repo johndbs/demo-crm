@@ -1,0 +1,58 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label for="serviceType">Service Type</label>
+        <input formControlName="serviceType" type="text" class="form-control" id="serviceType" placeholder="Enter service type">
+        <div *ngIf="form.controls['serviceType'].invalid && form.controls['serviceType'].touched" class="alert alert-danger">
+            Field in error
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="client">Client</label>
+        <input formControlName="client" type="text" class="form-control" id="client" placeholder="Enter client">
+        <div *ngIf="form.controls['client'].invalid && form.controls['client'].touched" class="alert alert-danger">
+            Field in error
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="numberOfDays">Number of Days</label>
+        <input formControlName="numberOfDays" type="number" class="form-control" id="numberOfDays" placeholder="Enter number of days">
+        <div *ngIf="form.controls['numberOfDays'].invalid && form.controls['numberOfDays'].touched" class="alert alert-danger">
+            Field in error
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="dailyRateExVAT">Daily rate VAT excluded</label>
+        <input formControlName="dailyRateExVAT" type="number" class="form-control" id="dailyRateExVAT" placeholder="Enter daily rate VAT excluded">
+        <div *ngIf="form.controls['dailyRateExVAT'].invalid && form.controls['dailyRateExVAT'].touched" class="alert alert-danger">
+            Field in error
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="vat">Daily rate VAT excluded</label>
+        <input formControlName="vat" type="number" class="form-control" id="vat" placeholder="Enter VAT">
+        <div *ngIf="form.controls['vat'].invalid && form.controls['vat'].touched" class="alert alert-danger">
+            Field in error
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="state">State</label>
+        <select formControlName="state" class="form-control" id="state">
+            <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea formControlName="comment" class="form-control" id="comment" placeholder="Enter comment"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+
+</form>
