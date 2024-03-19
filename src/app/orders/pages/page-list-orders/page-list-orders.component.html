@@ -8,8 +8,8 @@
             <td>{{ item.dailyRateExVAT | currency}}</td>
             <td>{{ item | price:false | currency}}</td>
             <td>{{ item | price:true | currency}}</td>
-            <td (change)="changeState(item, $event)">
-                <select>
+            <td [appState]="item.state">
+                <select (change)="changeState(item, $event)">
                     <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">{{ state }}</option>
                 </select>
             </td>

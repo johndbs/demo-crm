@@ -6,6 +6,7 @@ import { BtnComponent } from './components/btn/btn.component';
 import { TableLightComponent } from './components/table-light/table-light.component';
 import { RouterModule } from '@angular/router';
 import { PricePipe } from './pipes/price.pipe';
+import { StateDirective } from './directives/state.directive';
 
 
 
@@ -13,7 +14,8 @@ import { PricePipe } from './pipes/price.pipe';
   declarations: [
     BtnComponent,
     TableLightComponent,
-    PricePipe
+    PricePipe,
+    StateDirective
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { PricePipe } from './pipes/price.pipe';
     TemplatesModule, 
     BtnComponent,
     TableLightComponent,
-    PricePipe
+    PricePipe,
+    StateDirective
   ]
 })
 export class SharedModule { }
