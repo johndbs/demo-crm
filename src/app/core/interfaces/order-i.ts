@@ -9,4 +9,6 @@ export interface OrderI {
     client: string;
     comment: string
     id: number;
+
+    priceVatInc(val: number, coef: number, vat?: number): number;
 }

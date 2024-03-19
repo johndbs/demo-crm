@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../../core/models/order';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environnement } from '../../../environnements/environnement';
 
@@ -11,13 +11,17 @@ export class OrdersService {
 
   private apiUrl = environnement.apiUrl;
 
-
   constructor(private http: HttpClient) {}
 
-
   public getCollection(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.apiUrl}/orders`);
+    return this.http.get<Order[]>(`${this.apiUrl}/orders`)
+    .pipe(
+      map((orders) => {
+        return orders.map((order) => {
+          return new Order(order);
+        });
+      })
+    );
   }
-
 
 }

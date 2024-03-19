@@ -6,8 +6,8 @@
             <td>{{ item.client | uppercase }}</td>
             <td>{{ item.numberOfDays }}</td>
             <td>{{ item.dailyRateExVAT | currency}}</td>
-            <td>{{ item.dailyRateExVAT | price:item.numberOfDays | currency}}</td>
-            <td>{{ item.dailyRateExVAT | price:item.numberOfDays:item.vat | currency}}</td>
+            <td>{{ item | price:false | currency}}</td>
+            <td>{{ item | price:true | currency}}</td>
             <td>{{ item.state }}</td>
         </tr>
     </app-table-light>

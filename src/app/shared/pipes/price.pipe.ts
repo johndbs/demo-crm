@@ -5,11 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PricePipe implements PipeTransform {
 
-  transform(value: number, coef: number, vat?: number): number {
-    if(vat){
-      return value * coef * (1 + vat / 100);
+  transform(item: any, vatInc: boolean): number {
+    if(vatInc){
+      return item.priceVatInc(item.dailyRateExVAT, item.numberOfDays, item.vat);
     }
-    return value * coef;
+    return item.priceVatInc(item.dailyRateExVAT, item.numberOfDays);
   }
 
 }

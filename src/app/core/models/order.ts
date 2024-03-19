@@ -11,4 +11,17 @@ export class Order implements OrderI{
     comment!: string;
     id!: number;
 
+    constructor(obj?: Partial<Order>){
+        if(obj){
+            Object.assign(this, obj);
+        }
+    }
+
+    priceVatInc(val: number, coef: number, vat?: number | undefined): number {
+        if(vat){
+            return val * coef * (1 + vat / 100);
+        }
+        return val * coef;
+    }
+
 }
