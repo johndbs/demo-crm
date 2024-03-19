@@ -2,6 +2,7 @@
     
     <app-table-light [titles]="headers">
         <tr *ngFor="let item of collection">
+            <td><app-icon-edit (click)="goToEdit(item)"></app-icon-edit></td>
             <td>{{ item.serviceType }}</td>
             <td>{{ item.client | uppercase }}</td>
             <td>{{ item.numberOfDays }}</td>
