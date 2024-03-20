@@ -43,4 +43,10 @@ export class PageListOrdersComponent implements OnInit{
     this.router.navigate(['orders', 'edit', order.id]);
   }
 
+  public delete(order: Order): void {
+    this.ordersService.delete(order.id).subscribe((data_) => {
+      this.ordersService.getCollection().subscribe((data) => this.collection = data);
+    })
+  }
+
 }
