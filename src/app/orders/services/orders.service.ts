@@ -43,4 +43,8 @@ export class OrdersService {
     return this.http.post<Order>(`${this.apiUrl}/orders`, {...item, id: undefined});
   }
 
+  public delete(id: Number): Observable<Order> {
+    return this.http.delete<Order>(`${this.apiUrl}/orders/${id}`);
+  }
+
 }
