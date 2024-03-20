@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Order } from '../../core/models/order';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environnement } from '../../../environnements/environnement';
 import { StateOrder } from '../../core/enums/state-order';
@@ -12,17 +12,27 @@ export class OrdersService {
 
   private apiUrl = environnement.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  private collection$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
 
-  public getCollection(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.apiUrl}/orders`)
-    .pipe(
+  constructor(private http: HttpClient) {
+    this.refreshCollection();
+  }
+
+  private refreshCollection(): void {
+    this.http.get<Order[]>(`${this.apiUrl}/orders`).pipe(
       map((orders) => {
-        return orders.map((order) => {
-          return new Order(order);
+        return orders.map((data) => {
+          return new Order(data);
         });
       })
-    );
+    ).subscribe((orders) => {
+      console.log("refresh collection orders");
+      this.collection$.next(orders);
+    });
+  }
+
+  public getCollection(): Observable<Order[]> {
+    return this.collection$;
   }
 
   public changeState(order: Order, state: StateOrder): Observable<Order> {
@@ -32,7 +42,11 @@ export class OrdersService {
   }
   
   public update(order: Order): Observable<Order> {
-    return this.http.put<Order>(`${this.apiUrl}/orders/${order.id}`, order);
+    return this.http.put<Order>(`${this.apiUrl}/orders/${order.id}`, order).pipe(
+      tap(() => {
+        this.refreshCollection();
+      })
+    );
   }
 
   public getItemById(id: string): Observable<Order> {
@@ -40,11 +54,20 @@ export class OrdersService {
   }
 
   public add(item: Order): Observable<Order> {
-    return this.http.post<Order>(`${this.apiUrl}/orders`, {...item, id: undefined});
+    return this.http.post<Order>(`${this.apiUrl}/orders`, {...item, id: undefined}).pipe(
+      tap(() => {
+        this.refreshCollection();
+      })
+    );
   }
 
   public delete(id: Number): Observable<Order> {
-    return this.http.delete<Order>(`${this.apiUrl}/orders/${id}`);
+    console.log(`delete order id=${id}`);
+    return this.http.delete<Order>(`${this.apiUrl}/orders/${id}`).pipe(
+      tap(() => {
+        this.refreshCollection();
+      }
+    ));
   }
 
 }

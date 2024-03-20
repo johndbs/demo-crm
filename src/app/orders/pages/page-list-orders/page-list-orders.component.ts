@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class PageListOrdersComponent implements OnInit{
 
 
-  public collection!: Order[];
+  public collection$!: Observable<Order[]>;
 
   public headers: string[] = [
     "Actions",
@@ -31,7 +31,7 @@ export class PageListOrdersComponent implements OnInit{
   constructor(private ordersService: OrdersService, private router: Router) {}
 
   ngOnInit(): void {
-    this.ordersService.getCollection().subscribe((data)=> this.collection = data);
+    this.collection$ = this.ordersService.getCollection();
   }
 
   public changeState(order: Order, event: any): void {
@@ -44,9 +44,7 @@ export class PageListOrdersComponent implements OnInit{
   }
 
   public delete(order: Order): void {
-    this.ordersService.delete(order.id).subscribe((data_) => {
-      this.ordersService.getCollection().subscribe((data) => this.collection = data);
-    })
+    this.ordersService.delete(order.id).subscribe(() => {});
   }
 
 }
