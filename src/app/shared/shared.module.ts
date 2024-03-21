@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { PricePipe } from './pipes/price.pipe';
 import { StateDirective } from './directives/state.directive';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HighlightSelectedDirective } from './directives/highlight-selected.directive';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BtnComponent,
     TableLightComponent,
     PricePipe,
-    StateDirective
+    StateDirective,
+    HighlightSelectedDirective,
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BtnComponent,
     TableLightComponent,
     PricePipe,
-    StateDirective
+    StateDirective,
+    HighlightSelectedDirective,
   ]
 })
 export class SharedModule { }
