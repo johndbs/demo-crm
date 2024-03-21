@@ -14,11 +14,14 @@ export class OrdersService {
 
   private collection$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
 
+  private selectedItem$: BehaviorSubject<Order> = new BehaviorSubject<Order>(new Order());
+
+
   constructor(private http: HttpClient) {
     this.refreshCollection();
   }
 
-  private refreshCollection(): void {
+  private refreshCollection(id?: number): void {
     this.http.get<Order[]>(`${this.apiUrl}/orders`).pipe(
       map((orders) => {
         return orders.map((data) => {
@@ -27,8 +30,25 @@ export class OrdersService {
       })
     ).subscribe((orders) => {
       console.log("refresh collection orders");
+
+      if(id){
+        this.getItemById(id).subscribe((order) => {
+          this.selectedItem$.next(order);
+        });
+      }else{
+        this.selectedItem$.next(orders[0]);
+      }
+
       this.collection$.next(orders);
     });
+  }
+
+  public updateSelectedItem(item: Order): void {
+    this.selectedItem$.next(item);
+  }
+
+  public getSelectedItem(): Observable<Order | null> {
+    return this.selectedItem$;
   }
 
   public getCollection(): Observable<Order[]> {
@@ -49,7 +69,7 @@ export class OrdersService {
     );
   }
 
-  public getItemById(id: string): Observable<Order> {
+  public getItemById(id: number): Observable<Order> {
     return this.http.get<Order>(`${this.apiUrl}/orders/${id}`);
   }
 
@@ -69,5 +89,7 @@ export class OrdersService {
       }
     ));
   }
+
+
 
 }

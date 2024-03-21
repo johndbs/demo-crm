@@ -1,10 +1,10 @@
 <app-template-fullwidth title="List orders">
     
     <app-table-light [titles]="headers">
-        <tr *ngFor="let item of collection$ | async">
+        <tr *ngFor="let item of collection$ | async" (click)="selectItem(item)">
             <td>
-                <app-icon-edit (click)="goToEdit(item)"></app-icon-edit>
-                <app-icon-delete (click)="delete(item)"></app-icon-delete>
+                <app-icon-edit (click)="$event.stopPropagation(); goToEdit(item)"></app-icon-edit>
+                <app-icon-delete (click)="$event.stopPropagation(); delete(item)"></app-icon-delete>
             </td>
             <td>{{ item.serviceType }}</td>
             <td>{{ item.client | uppercase }}</td>
@@ -20,4 +20,12 @@
         </tr>
     </app-table-light>
     <app-btn destRoute="add" label="Add an order"></app-btn>
+
+    <ul class="nav">
+        <li class="nav-item" routerLink="detail" routerLinkActive="active">Detail</li>
+        <li class="nav-item" routerLink="comment" routerLinkActive="active">Comment</li>
+    </ul>
+
+    <router-outlet></router-outlet>
+
 </app-template-fullwidth>

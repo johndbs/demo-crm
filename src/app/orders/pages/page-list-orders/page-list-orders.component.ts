@@ -47,4 +47,8 @@ export class PageListOrdersComponent implements OnInit{
     this.ordersService.delete(order.id).subscribe(() => {});
   }
 
+  public selectItem(item: Order): void {
+    this.ordersService.updateSelectedItem(item);
+  }
+
 }

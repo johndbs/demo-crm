@@ -23,7 +23,7 @@ export class PageEditOrderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const itemId: string = this.route.snapshot.params['id'];
+    const itemId: number = this.route.snapshot.params['id'];
 
     this.item$ = this.ordersService.getItemById(itemId);
   }

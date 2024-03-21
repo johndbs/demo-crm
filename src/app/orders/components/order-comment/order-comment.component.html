@@ -1,0 +1,6 @@
+<div *ngIf="item$ | async as item">
+    <p>{{item.comment}}</p>
+</div>
+<div>
+    <button (click)="goBack()" class="btn btn-link">Back</button>
+</div>
