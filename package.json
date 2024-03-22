@@ -8,8 +8,11 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "jsonServer": "json-server --watch mock_db/db.json --port 3000",
-    "doc": "compodoc -p tsconfig.json -o -s"
- },
+    "doc": "compodoc -p tsconfig.json -o -s",
+    "build:stats": "ng build --stats-json",
+    "analyze:esbuild": "ng build --configuration production --stats-json && esbuild-visualizer --open=true --metadata dist/demo-crm/stats.json",
+    "analyze:source-map": "ng build --configuration production --source-map && source-map-explorer dist/demo-crm/**/*.js"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.1",
@@ -27,6 +30,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.2",
     "dayjs": "^1.11.10",
+    "esbuild-visualizer": "^0.6.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -44,6 +48,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "source-map-explorer": "^2.5.3",
     "typescript": "~5.3.2"
   }
 }
