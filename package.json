@@ -11,7 +11,8 @@
     "doc": "compodoc -p tsconfig.json -o -s",
     "build:stats": "ng build --stats-json",
     "analyze:esbuild": "ng build --configuration production --stats-json && esbuild-visualizer --open=true --metadata dist/demo-crm/stats.json",
-    "analyze:source-map": "ng build --configuration production --source-map && source-map-explorer dist/demo-crm/**/*.js"
+    "analyze:source-map": "ng build --configuration production --source-map && source-map-explorer dist/demo-crm/**/*.js",
+    "serve" : "serve -s ./dist/demo-crm/browser"
   },
   "private": true,
   "dependencies": {
