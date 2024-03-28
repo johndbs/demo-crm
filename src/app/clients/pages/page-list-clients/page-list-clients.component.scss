@@ -1,0 +1,3 @@
+tr.highlight td:not([class^="state"]) {
+    background-color: var(--app-highlight);
+}

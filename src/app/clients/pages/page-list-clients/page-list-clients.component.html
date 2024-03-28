@@ -1,1 +1,23 @@
-<p>page-list-clients works!</p>
+<app-template-fullwidth title="List clients">
+
+    <app-table-light [titles]="headers">
+        <tr *ngFor="let item of collection$ | async" (click)="selectItem(item)" appHighlightSelected>
+            <td>
+                <app-icon-edit (click)="$event.stopPropagation(); goEdit(item)"></app-icon-edit>
+                <app-icon-delete (click)="$event.stopPropagation(); delete(item)"></app-icon-delete>
+            </td>
+            <td>{{item.name}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.email}}</td>
+        </tr>
+    </app-table-light>
+
+    <app-btn destRoute="add" label="Add a client"></app-btn>
+
+    <ul class="nav">
+        <li class="nav-item" routerLink="detail" routerLinkActive="active">Detail</li>
+    </ul>
+
+    <router-outlet></router-outlet>
+
+</app-template-fullwidth>

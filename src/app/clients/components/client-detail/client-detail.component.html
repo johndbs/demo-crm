@@ -1,0 +1,11 @@
+<div *ngIf="item$ | async as item">
+    <ul>
+        <li>{{ item.name }}</li>
+        <li>{{ item.email }}</li>
+        <li>{{ item.phone }}</li>
+        <li>{{ item.comment }}</li>
+    </ul>
+</div>
+<div>
+    <button (click)="goBack()" class="btn btn-link">Back</button>
+</div>
